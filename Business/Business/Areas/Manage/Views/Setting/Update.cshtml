@@ -1,0 +1,27 @@
+﻿@using Business.Areas.Manage.ViewModels.Blog;
+@model Setting;
+<div class="col-lg-8  stretch-card" style="margin:auto; margin-top:20px">
+    <div class="card">
+        <div class="container">
+            <form method="post" enctype="multipart/form-data">
+
+                <div class="mb-3" style="margin-bottom:20px;">
+                    <label asp-for="Key" class="form-label">Title</label>
+                </div>
+                <div class="mb-8 d-flex" style="box-sizing:border-box">
+                    <div class="mb-6" style="margin-bottom:10px;max-width:510px;">
+                        <label asp-for="Value" class="form-label">Value</label>
+                        <textarea asp-for="Value" type="text" placeholder="Description" class="form-control" style="width:500px;height:150px;">
+                        </textarea>
+                        <span asp-validation-for="Value" style="color:red"></span>
+                    </div>
+                    <div asp-validation-summary="All" class="text-danger" style="margin-top:20px;margin-left:20px;right:0;"></div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,49 @@
+﻿@using Business.Areas.Manage.ViewModels.Blog;
+@model List<GetBlogVm>;
+@{
+    int count = 0;
+}
+<div>
+    <table class="table table-dark table-striped" style="width:100%;">
+
+        <thead style="width:100%;">
+            <tr>
+                <th scope="col" width="50px"><h1>Blogs</h1></th>
+                <th scope="col" width="70px">Id</th>
+                <th scope="col" width="400px">Image</th>
+                <th scope="col" width="500px">Title</th>
+                <th scope="col" width="600px">Description</th>
+                <th scope="col" >Create Time</th>
+                <th scope="col" >Update Time</th>
+                <th scope="col" width="200px"><div><a class="btn btn-primary" style="margin-left:25px;" asp-controller="Blog" asp-action="Create">Create</a></div></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                count++;
+                <tr>
+                    <th scope="row"><h1>@count</h1></th>
+                    <td><h1>@item.Id</h1></td>
+                    <td><img src="~/Upload/Image/@item.ImgUrl"/></td>
+                    <td><h3>@item.Title</h3></td>
+                    <td>
+                        <h4>
+                            @if (item.Description is not null)
+                            {
+                                @(item.Description.Length > 155 ? item.Description.Substring(0, 152) + "..." : item.Description)
+                            }
+                        </h4>
+                    </td>
+                    <td>@item.CreatedAt</td>
+                    <td>@item.UpdatedAt</td>
+                    <td>
+                        <a class="btn btn-danger " asp-controller="Blog" asp-action="Delete" asp-route-id="@item.Id">Delete </a>
+                        <a class="btn btn-warning " asp-controller="Blog" asp-action="Update" asp-route-id="@item.Id">Update</a>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
